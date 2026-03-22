@@ -4,7 +4,8 @@ class ScratchJson{
     }
 
     setJSON(value){
-        this.data=JSON.parse(value);
+        if(typeof value==="object")this.data=value;
+        else if(typeof value==="string")this.data=JSON.parse(value);
     }
 
     //使わないので未完成
