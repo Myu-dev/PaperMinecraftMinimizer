@@ -15,7 +15,7 @@ function minimize(json){
     const char="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-";
     const globalLists=json.globalLists;
     const globalVariables=json.globalVariables;
-    const DMUL=globalVariables._DMUL;
+    const DMUL=Number(globalVariables._DMUL);
     const BlockData=globalLists._BLOCK_DATA;
     let number="";
     for(let i=DMUL;i<BlockData.length;i++){
