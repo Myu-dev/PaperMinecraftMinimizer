@@ -12,20 +12,24 @@ class ScratchJson{
         return this.data.targets.find(v=>v.isStage)
     }
 
-    //使わないので未完成
     get globalVariables(){
         const stage=this.stage;
-        const variables=stage.variables;
-        this.data
+        const variables=Object.values(stage.variables);
+        const ret={};
+        variables.forEach(item=>{
+            ret[item[0]]=item[1]
+        });
+        return ret;
     }
 
     get globalLists(){
         const stage=this.stage;
-        const Lists=Object.values(stage.lists);
+        const lists=Object.values(stage.lists);
         const ret={};
-        Lists.forEach(item=>{
-            ret[item[0]=item[1]]
+        lists.forEach(item=>{
+            ret[item[0]]=item[1]
         });;
+        return ret;
     }
 
     get json(){return JSON.stringify(this.data)}
