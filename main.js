@@ -20,8 +20,8 @@ function minimize(json){
     let number="";
     for(let i=DMUL;i<BlockData.length;i++){
         const v=BlockData[i].trim();
-        if(v||i%DMUL!==1){
-            console.log(i);
+        if(v||i%DMUL!=1){
+            console.log(i,i%DMUL);
         }
     }
     return ret;
