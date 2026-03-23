@@ -23,10 +23,10 @@ function minimize(json){
         if(v&&i%DMUL!==1){
             const data=BlockData[i];
             const length=data.length;
-            number+=(length.length===1)?"0"+length:length;
+            number+=(length.length===1)?"0"+length:String(length);
             for(let j=0;j<data.length;j++){
                 const t=char.indexOf(data[j]);
-                number+=(t.length===1)?"0"+t:t;
+                number+=(t.length===1)?"0"+t:String(t);
             }
         }
     }
