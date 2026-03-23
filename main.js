@@ -21,8 +21,15 @@ function minimize(json){
     for(let i=DMUL;i<BlockData.length;i++){
         const v=BlockData[i].trim();
         if(v&&i%DMUL!==1){
-            console.log(i,i%DMUL);
+            const data=BlockData[i];
+            const length=data.length;
+            number+=(length.length===1)?"0"+length:length;
+            for(let j=0;j<data.length;j++){
+                const t=char.indexOf(data[j]);
+                number+=(t.length===1)?"0"+t:t;
+            }
         }
     }
+    console.log(number);
     return ret;
 }
