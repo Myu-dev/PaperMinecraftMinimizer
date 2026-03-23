@@ -22,7 +22,10 @@ class ScratchJson{
     get globalLists(){
         const stage=this.stage;
         const Lists=Object.values(stage.lists);
-        return Lists.map(v=>{return {name:v[0],value:v[1]}});
+        const ret={};
+        Lists.forEach(item=>{
+            ret[item[0]=item[1]]
+        });;
     }
 
     get json(){return JSON.stringify(this.data)}
