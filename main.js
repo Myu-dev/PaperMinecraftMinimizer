@@ -58,10 +58,8 @@ function minimize(json){
         }else if(i===number.length-1){
                 imgs.push(canvas.toDataURL("image/png"));
                 ctx.clearRect(0,0,canvasWidth,canvasHeight)
-        }
-        x++;
+        }else x++;
     }
-    document.body.innerHTML=`<a href="${imgs[0]}"></a>`
-    console.log(number);
+    document.body.innerHTML=`<a href="${imgs[0]}">画像</a>`
     return ret;
 }
