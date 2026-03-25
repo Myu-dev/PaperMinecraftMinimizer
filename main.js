@@ -39,25 +39,28 @@ function minimize(json){
     canvas.width=canvasWidth;
     canvas.height=canvasHeight;
     const ctx=canvas.getContext("2d");
-    let x=0;
-    let y=0;
+    const div=4;
+    const blockWidth=canvasWidth/div;
+    const blockHeight=canvasHeight/div;
     for(let i=0;i<number.length;i++){
         let t=number[i]*10;
         if(String(t).length===1)t+="0";
         ctx.fillStyle="#"+t+t+t;
+        const block=Math.floor(i/(blockWidth/blockHeight));
+        const blockX=block%div;
+        const blockY=Math.floor(block/div);
+
+        const local=i/(blockWidth*blockHeight);
+        const x=blockX*blockWidth+(local%blockWidth);
+        const y=blockY*blockHeight+Math.floor(local/blockHeight)
         ctx.fillRect(x,y,1,1);
-        if(x===479){
-            x=0;
-            y++;
-            if(y===360){
-                x=0;
-                y=0;
-                imgs.push(canvas.toDataURL("image/png"));
-                ctx.clearRect(0,0,canvasWidth,canvasHeight)
-            }
+        if(i%(blockWidth*blockHeight)&&i!==0){
+            imgs.push(canvas.toDataURL("image/png"));
+            ctx.clearRect(0,0,canvasWidth,canvasHeight);
+            x++;
         }else if(i===number.length-1){
-                imgs.push(canvas.toDataURL("image/png"));
-                ctx.clearRect(0,0,canvasWidth,canvasHeight)
+            imgs.push(canvas.toDataURL("image/png"));
+            ctx.clearRect(0,0,canvasWidth,canvasHeight);
         }else x++;
     }
     document.body.innerHTML=`<a href="${imgs[0]}">画像</a>`
