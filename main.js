@@ -7,11 +7,10 @@ fileInput.addEventListener("change",async()=>{
     const jsonFile=JSON.parse(await zip.file("project.json").async("string"));
     json.setJSON(jsonFile);
     const ret=minimize(json);
-    console.log(ret.json);
+    console.log(json.json);
 });
 
 function minimize(json){
-    let ret={...json};
     const char="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-";
     const globalLists=json.globalLists;
     const globalVariables=json.globalVariables;
@@ -42,6 +41,7 @@ function minimize(json){
     const div=4;
     const blockWidth=canvasWidth/div;
     const blockHeight=canvasHeight/div;
+    console.log("creating imgs...");
     for(let i=0;i<number.length;i++){
         let t=number[i]*10;
         if(String(t).length===1)t+="0";
@@ -63,6 +63,5 @@ function minimize(json){
             ctx.clearRect(0,0,canvasWidth,canvasHeight);
         }else x++;
     }
-    document.body.innerHTML=`<a href="${imgs[0]}">画像</a>`
-    return ret;
+    document.body.innerHTML=`<a href="${imgs[0]}">画像</a>`;
 }
