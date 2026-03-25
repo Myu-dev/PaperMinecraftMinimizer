@@ -64,5 +64,6 @@ function minimize(json){
             ctx.clearRect(0,0,canvasWidth,canvasHeight);
         }else x++;
     }
+    console.log("生成完了!")
     document.body.innerHTML=`<a href="${imgs[0]}">画像</a>`;
 }
