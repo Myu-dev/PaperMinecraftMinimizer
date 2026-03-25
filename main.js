@@ -30,6 +30,35 @@ function minimize(json){
             }
         }
     }
+    //ここから画像にしていく
+    const imgs=[];
+    const canvas=document.createElement("canvas");
+    const canvasWidth=480;
+    const canvasHeight=360;
+    canvas.width=canvasWidth;
+    canvas.height=canvasHeight;
+    const ctx=canvas.getContext("2d");
+    let x=0;
+    let y=0;
+    for(let i=0;i<number.length;i++){
+        const t=number[i]*10;
+        ctx.fillStyle("#"+t+t+t);
+        ctx.fillRect(x,y,1,1);
+        if(x===479){
+            x=0;
+            y++;
+            if(y===360){
+                x=0;
+                y=0;
+                imgs.push(canvas.toDataURL("image/png"));
+                ctx.clearRect(0,0,canvasWidth,canvasHeight)
+            }
+        }else if(i===number.length-1){
+                imgs.push(canvas.toDataURL("image/png"));
+                ctx.clearRect(0,0,canvasWidth,canvasHeight)
+        }
+    }
+    document.body.innerHTML=`<a href="${imgs[0]}"></a>`
     console.log(number);
     return ret;
 }
