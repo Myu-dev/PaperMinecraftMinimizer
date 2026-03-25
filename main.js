@@ -42,7 +42,7 @@ function minimize(json){
     let y=0;
     for(let i=0;i<number.length;i++){
         const t=number[i]*10;
-        ctx.fillStyle("#"+t+t+t);
+        ctx.fillStyle="#"+t+t+t;
         ctx.fillRect(x,y,1,1);
         if(x===479){
             x=0;
