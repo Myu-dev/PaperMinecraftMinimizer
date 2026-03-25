@@ -42,6 +42,7 @@ function minimize(json){
     let y=0;
     for(let i=0;i<number.length;i++){
         const t=number[i]*10;
+        if(String(t).length===1)t+="0";
         ctx.fillStyle="#"+t+t+t;
         ctx.fillRect(x,y,1,1);
         if(x===479){
@@ -57,6 +58,7 @@ function minimize(json){
                 imgs.push(canvas.toDataURL("image/png"));
                 ctx.clearRect(0,0,canvasWidth,canvasHeight)
         }
+        x++;
     }
     document.body.innerHTML=`<a href="${imgs[0]}"></a>`
     console.log(number);
