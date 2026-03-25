@@ -11,7 +11,7 @@ fileInput.addEventListener("change",async()=>{
 });
 
 function minimize(json){
-    let ret=json;
+    let ret={...json};
     const char="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-";
     const globalLists=json.globalLists;
     const globalVariables=json.globalVariables;
