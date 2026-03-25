@@ -46,6 +46,7 @@ function minimize(json){
         let t=number[i]*10;
         if(String(t).length===1)t+="0";
         ctx.fillStyle="#"+t+t+t;
+        console.log("test")
         const block=Math.floor(i/(blockWidth/blockHeight));
         const blockX=block%div;
         const blockY=Math.floor(block/div);
