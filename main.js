@@ -58,11 +58,10 @@ function minimize(json){
         if(i%(blockWidth*blockHeight)&&i!==0){
             imgs.push(canvas.toDataURL("image/png"));
             ctx.clearRect(0,0,canvasWidth,canvasHeight);
-            x++;
         }else if(i===number.length-1){
             imgs.push(canvas.toDataURL("image/png"));
             ctx.clearRect(0,0,canvasWidth,canvasHeight);
-        }else x++;
+        }
     }
     console.log("生成完了!")
     document.body.innerHTML=`<a href="${imgs[0]}">画像</a>`;
