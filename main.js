@@ -30,6 +30,7 @@ function minimize(json){
             }
         }
     }
+    console.log(number);
     //ここから画像にしていく
     const imgs=[];
     const canvas=document.createElement("canvas");
@@ -41,7 +42,7 @@ function minimize(json){
     let x=0;
     let y=0;
     for(let i=0;i<number.length;i++){
-        const t=number[i]*10;
+        let t=number[i]*10;
         if(String(t).length===1)t+="0";
         ctx.fillStyle="#"+t+t+t;
         ctx.fillRect(x,y,1,1);
