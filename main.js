@@ -80,7 +80,7 @@ function minimize(json){
         }
     }
     console.log("生成完了!")
-    const blob = new Blob([JSON.stringify(blockData)], {type:"application/json"});
+    const blob = new Blob([blockData.toString()], {type:"text/plain"});
 
     const url = URL.createObjectURL(blob);
     document.body.innerHTML=`<a href="${url}" download>画像</a>`;
