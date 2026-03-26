@@ -25,6 +25,7 @@ function minimize(json){
             number+=(String(length).length===1)?"0"+length:String(length);
             for(let j=0;j<data.length;j++){
                 const t=char.indexOf(data[j]);
+                if(t<0){console.log(t,data[j])}
                 number+=(String(t).length===1)?"0"+t:String(t);
             }
         }
