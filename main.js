@@ -11,9 +11,11 @@ fileInput.addEventListener("change",async()=>{
 });
 
 function minimize(zip,json){
+    console.log("processing...");
     const char="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-. ";
     const globalLists=json.globalLists;
     const globalVariables=json.globalVariables;
+    console.log(globalVariables);
     const DMUL=Number(globalVariables._DMUL);
     const blockData=globalLists._BLOCK_DATA;
     let number="";
