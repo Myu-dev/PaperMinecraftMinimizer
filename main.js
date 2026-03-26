@@ -49,7 +49,7 @@ function minimize(json){
         let t=number[i]*10;
         if(String(t).length===1)t+="0";
         ctx.fillStyle="#"+t+t+t;
-        ctx.fillRect(x%blockWidth+((block%4)*blockWidth),Math.floor(y/blockHeight+(Math.floor(block/4)*blockHeight)),1,1);
+        ctx.fillRect(x+((block%4)*blockWidth),Math.floor(y+(Math.floor(block/4)*blockHeight)),1,1);
         x++;
         if(x===blockWidth){
             x=0;
