@@ -35,7 +35,6 @@ function minimize(json){
             blockData.splice(i,1);
             i--;
         }
-        console.log(i,ii);
         ii++;
     }
 
