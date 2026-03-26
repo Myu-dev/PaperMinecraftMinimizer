@@ -49,7 +49,7 @@ function minimize(json){
         let t=number[i]*10;
         if(String(t).length===1)t+="0";
         ctx.fillStyle="#"+t+t+t;
-        ctx.fillRect(x+((block%4)*blockWidth),Math.floor(y+(Math.floor(block/4)*blockHeight)),1,1);
+        ctx.fillRect(x+((block%4)*blockWidth),y+(Math.floor(block/4)*blockHeight),1,1);
         x++;
         if(x===blockWidth){
             x=0;
@@ -57,9 +57,11 @@ function minimize(json){
             if(y===blockHeight){
                 y=0;
                 block++;
+                console.log("block: "+block, "x: "+(block%4)*blockWidth+"y: "+Math.floor(block/4*blockHeight));
             }
         }
         if(block===div*div){
+            block=0;
             imgs.push(canvas.toDataURL("image/png"));
             ctx.clearRect(0,0,canvasWidth,canvasHeight);
         }else if(i===number.length-1){
