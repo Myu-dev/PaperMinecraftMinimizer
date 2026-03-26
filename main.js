@@ -15,19 +15,19 @@ function minimize(json){
     const globalLists=json.globalLists;
     const globalVariables=json.globalVariables;
     const DMUL=Number(globalVariables._DMUL);
-    const BlockData=globalLists._BLOCK_DATA;
+    const blockData=globalLists._BLOCK_DATA;
     let number="";
-    for(let i=DMUL;i<BlockData.length;i++){
-        const v=BlockData[i].trim();
+    for(let i=DMUL;i<blockData.length;i++){
+        const v=blockData[i].trim();
         if(v&&i%DMUL!==1){
-            const data=BlockData[i];
-            const length=data.length;
+            const length=v.length;
             number+=(String(length).length===1)?"0"+length:String(length);
-            for(let j=0;j<data.length;j++){
-                const t=char.indexOf(data[j]);
+            for(let j=0;j<v.length;j++){
+                const t=char.indexOf(v[j]);
                 if(t<0){throw new Error("不正な文字が含まれています")}
                 number+=(String(t).length===1)?"0"+t:String(t);
             }
+            blockData.splice(i,1);
         }
     }
     console.log(number);
@@ -72,5 +72,5 @@ function minimize(json){
         }
     }
     console.log("生成完了!")
-    document.body.innerHTML=`<a href="${imgs[0]}">画像</a>`;
+    document.body.innerHTML=`<a href="${JSON.stringify(blockData)}" download>画像</a>`;
 }
