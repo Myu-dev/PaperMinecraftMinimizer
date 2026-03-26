@@ -42,19 +42,24 @@ function minimize(json){
     const blockWidth=canvasWidth/div;
     const blockHeight=canvasHeight/div;
     console.log("creating imgs...");
+    let x=0;
+    let y=0;
+    let block=0;
     for(let i=0;i<number.length;i++){
         let t=number[i]*10;
         if(String(t).length===1)t+="0";
         ctx.fillStyle="#"+t+t+t;
-        const block=Math.floor(i/(blockWidth/blockHeight));
-        const blockX=block%div;
-        const blockY=Math.floor(block/div);
-
-        const local=i/(blockWidth*blockHeight);
-        const x=blockX*blockWidth+(local%blockWidth);
-        const y=blockY*blockHeight+Math.floor(local/blockHeight)
-        ctx.fillRect(x,y,1,1);
-        if(i%(blockWidth*blockHeight)&&i!==0){
+        ctx.fillRect(x%blockWidth,Math.floor(y/blockHeight),1,1);
+        x++;
+        if(x===blockWidth){
+            x=0;
+            y++;
+            if(y===blockHeight){
+                y=0;
+                block++;
+            }
+        }
+        if(block===div*div){
             imgs.push(canvas.toDataURL("image/png"));
             ctx.clearRect(0,0,canvasWidth,canvasHeight);
         }else if(i===number.length-1){
