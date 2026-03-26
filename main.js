@@ -34,6 +34,7 @@ function minimize(json){
             blockData.splice(i,1);
             i--;
         }
+        console.log(i)
     }
 
     console.log(number);
