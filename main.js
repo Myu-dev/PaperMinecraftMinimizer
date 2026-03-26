@@ -25,7 +25,10 @@ function minimize(json){
             number+=(String(length).length===1)?"0"+length:String(length);
             for(let j=0;j<data.length;j++){
                 const t=char.indexOf(data[j]);
-                if(t<0){throw new Error("不正な文字が含まれています: "+data[j])}
+                if(t<0){
+                    console.error(data,i)
+                    throw new Error("不正な文字が含まれています: "+data[j])
+                }
                 number+=(String(t).length===1)?"0"+t:String(t);
             }
             blockData.splice(i,1);
