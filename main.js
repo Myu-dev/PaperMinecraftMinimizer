@@ -17,9 +17,10 @@ function minimize(json){
     const DMUL=Number(globalVariables._DMUL);
     const blockData=globalLists._BLOCK_DATA;
     let number="";
+    let ii=0;
     for(let i=DMUL;i<blockData.length;i++){
         const v=blockData[i].trim();
-        if(v&&i%DMUL!==1){
+        if(v&&ii%DMUL!==1){
             const data=blockData[i];
             const length=data.length;
             number+=(String(length).length===1)?"0"+length:String(length);
@@ -34,7 +35,8 @@ function minimize(json){
             blockData.splice(i,1);
             i--;
         }
-        console.log(i)
+        console.log(i,ii);
+        ii++;
     }
 
     console.log(number);
