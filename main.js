@@ -32,8 +32,10 @@ function minimize(json){
                 number+=(String(t).length===1)?"0"+t:String(t);
             }
             blockData.splice(i,1);
+            i--;
         }
     }
+
     console.log(number);
     console.log(number.length);
     //ここから画像にしていく
