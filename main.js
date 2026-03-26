@@ -11,7 +11,7 @@ fileInput.addEventListener("change",async()=>{
 });
 
 function minimize(json){
-    const char="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.";
+    const char="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-. ";
     const globalLists=json.globalLists;
     const globalVariables=json.globalVariables;
     const DMUL=Number(globalVariables._DMUL);
@@ -25,7 +25,7 @@ function minimize(json){
             number+=(String(length).length===1)?"0"+length:String(length);
             for(let j=0;j<data.length;j++){
                 const t=char.indexOf(data[j]);
-                if(t<0){console.log(t,data[j])}
+                if(t<0){throw new Error("不正な文字が含まれています")}
                 number+=(String(t).length===1)?"0"+t:String(t);
             }
         }
