@@ -30,6 +30,7 @@ function minimize(json){
         }
     }
     console.log(number);
+    console.log(number.length);
     //ここから画像にしていく
     const imgs=[];
     const canvas=document.createElement("canvas");
@@ -57,7 +58,7 @@ function minimize(json){
             if(y===blockHeight){
                 y=0;
                 block++;
-                console.log("block: "+block, "x: "+(block%4)*blockWidth+"y: "+Math.floor(block/4*blockHeight));
+                console.log("block: "+block, "x: "+(block%4)*blockWidth+"y: "+Math.floor((block/4)*blockHeight));
             }
         }
         if(block===div*div){
