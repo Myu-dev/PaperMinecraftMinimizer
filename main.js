@@ -1,5 +1,6 @@
 const fileInput=document.getElementById("fileInput");
 fileInput.addEventListener("change",async()=>{
+    console.log("ファイルを読み込み中...");
     const json=new ScratchJson();
     const file=fileInput.files[0];
     if(!file)return;
