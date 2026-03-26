@@ -1,12 +1,11 @@
 const fileInput=document.getElementById("fileInput");
+console.log(fileInput);
 fileInput.addEventListener("change",async()=>{
     console.log("ファイルを読み込み中...");
-    const json=new ScratchJson();
     const file=fileInput.files[0];
     if(!file)return;
     const zip=await JSZip.loadAsync(file);
-    const jsonFile=JSON.parse(await zip.file("project.json").async("string"));
-    json.setJSON(jsonFile);
+    const json=new ScratchJson(JSON.parse(await zip.file("project.json").async("string")));
     const ret=minimize(zip,json);
     console.log(json.json);
 });
