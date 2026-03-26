@@ -1,6 +1,9 @@
 class ScratchJson{
     constructor(){
         this.data={};
+        this.stage=this.getStage();
+        this.globalLists=this.getGlobalLists();
+        this.globalVariables=this.getGlobalVariables();
     }
 
     setJSON(value){
@@ -8,27 +11,31 @@ class ScratchJson{
         else if(typeof value==="string")this.data=JSON.parse(value);
     }
 
-    get stage(){
+    getStage(){
         return this.data.targets.find(v=>v.isStage)
     }
 
-    get globalVariables(){
+    getGlobalVariables(){
         const stage=this.stage;
-        const variables=Object.values(stage.variables);
         const ret={};
-        variables.forEach(item=>{
-            ret[item[0]]=item[1]
-        });
+        for(const [id,v] of Object.entries(stage.variables)){
+            ret[v[0]]={
+                id,
+                value:v[1]
+            }
+        }
         return ret;
     }
 
-    get globalLists(){
+    getGlobalLists(){
         const stage=this.stage;
-        const lists=Object.values(stage.lists);
         const ret={};
-        lists.forEach(item=>{
-            ret[item[0]]=item[1]
-        });;
+        for(const [id,v] of Object.entries(stage.lists)){
+            ret[v[0]]={
+                id,
+                value:v[1]
+            }
+        }
         return ret;
     }
 

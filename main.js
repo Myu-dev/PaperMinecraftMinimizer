@@ -6,11 +6,11 @@ fileInput.addEventListener("change",async()=>{
     const zip=await JSZip.loadAsync(file);
     const jsonFile=JSON.parse(await zip.file("project.json").async("string"));
     json.setJSON(jsonFile);
-    const ret=minimize(json);
+    const ret=minimize(zip,json);
     console.log(json.json);
 });
 
-function minimize(json){
+function minimize(zip,json){
     const char="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-. ";
     const globalLists=json.globalLists;
     const globalVariables=json.globalVariables;
@@ -79,9 +79,12 @@ function minimize(json){
             ctx.clearRect(0,0,canvasWidth,canvasHeight);
         }
     }
-    console.log("生成完了!")
-    const blob = new Blob([blockData.toString()], {type:"text/plain"});
+    console.log("生成完了!");
+    const projectJSON=json;
+    json.globalLists.blockData=blockData;
+    zip.file("project.json",JSON.stringify(projectJSON))
+    const blob=await zip.generateAsync("type:blob")
 
-    const url = URL.createObjectURL(blob);
-    document.body.innerHTML=`<a href="${url}" download>画像</a>`;
+    const url= URL.createObjectURL(blob);
+    document.body.innerHTML=`<a href="${url}" download="project.sb3">ダウンロード</a>`;
 }
