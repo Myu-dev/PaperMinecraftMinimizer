@@ -20,11 +20,12 @@ function minimize(json){
     for(let i=DMUL;i<blockData.length;i++){
         const v=blockData[i].trim();
         if(v&&i%DMUL!==1){
-            const length=v.length;
+            const data=blockData[i];
+            const length=data.length;
             number+=(String(length).length===1)?"0"+length:String(length);
-            for(let j=0;j<v.length;j++){
-                const t=char.indexOf(v[j]);
-                if(t<0){throw new Error("不正な文字が含まれています")}
+            for(let j=0;j<data.length;j++){
+                const t=char.indexOf(data[j]);
+                if(t<0){throw new Error("不正な文字が含まれています: "+data[j])}
                 number+=(String(t).length===1)?"0"+t:String(t);
             }
             blockData.splice(i,1);
